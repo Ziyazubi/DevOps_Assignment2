@@ -4,29 +4,37 @@
 DevOps_Assignment2: - DockerFile - Build image with loaded MYSQL schema
 
 Steps to solve this Assignment: -
-1. Pull the latest code i.e; Open terminal & type following command: -
-	git clone https://github.com/Ziyazubi/DevOps_Assignment2.git
 
-2. Go to cloned repo-directory and Build image using command: -
+Pull the latest code i.e; Open terminal & type following command: -
+
+	git clone https://github.com/Ziyazubi/DevOps_Assignment2.git
+	
+Go to cloned repo-directory and Build image using command: -
+	
 	cd DevOps_Assignment2
 	sudo docker build -t mysqlimage .
 
-3. Start the container using command: -
+Start the container using command: -
+	
 	sudo docker run --name pucsd_assignment_2 -p 4040:4040 -d mysqlimage
 
-4. Connect to MYSQL using a bash shell using command: -
+Connect to MYSQL using a bash shell using command: -
+	
 	sudo docker exec -it pucsd_assignment_2 /bin/bash
 
-5. It will take you to the root, then start MYSQL with Username = pucsd and Password = pucsd using command: -
+It will take you to the root, then start MYSQL with Username = pucsd and Password = pucsd using command: -
+
 	mysql -upucsd -ppucsd
 
-6. After successful connection with MYSQL we can see Database = pucsdStudents and Table = studentData and we can get whole data using command: -
+After successful connection with MYSQL we can see Database = pucsdStudents and Table = studentData and we can get whole data using command: -
+	
 	show databases;		// to check your databases
 	use pucsdStudents;
 	select * from studentData;
 	show tables;		// to check your tables
 
 Explanation of DockerFile and its instructions: -
+	
 	FROM mysql:latest 
 	ENV MYSQL_ROOT_PASSWORD 123 
 	ENV MYSQL_DATABASE pucsdStudents 
